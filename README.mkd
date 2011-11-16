@@ -1,0 +1,42 @@
+# Project: #
+JPEF Magic
+
+## Contributors: ##
+Tim Habersack (tim@hithlonde.com - http://tim.hithlonde.com)
+
+## Summary: ##
+JPEF (Javascript, PHP, Email Form) Magic is a package which handles email forms in an elegant and simple manner. Essentially, it lets you add email forms to your site and deploy addition email forms down the road much quicker then creating each one from scratch.
+
+Check out a demo at: http://lab.citracode.com/jpef_magic/
+
+### Notable features include: ###
+
+* Consolidation; instead of validation and post-processing on each form page, handled with one file
+* Email generated has **full text** from questions on form
+* Settings for email processing (Email Subject, From, etc) are handled in hidden inputs on form
+* After success, passes all the email body to the 'on success' page you've set up
+    * Allows you to have one "Form submitted successfully" page, with the users info displayed.
+* Utilizes 
+	* jQuery 1.6.4 (http://jquery.com)
+    * jQuery Validation (http://bassistance.de/jquery-plugins/jquery-plugin-validation/)
+	* jQuery Metadata (http://plugins.jquery.com/project/metadata)
+
+## Things to know: ##
+The files in the **/library** directory are the core of JPEF. The index.html, success.php and failure.php are designed as templates to base your own pages off of.
+
+The configuration for the email that is sent resides in the form:
+
+	<input type="hidden" name="to_email" value="your_department@example.com" />
+	<input type="hidden" name="from_email" value="Robot <robot@example.com>" />
+	<input type="hidden" name="on_success" value="success.php" />
+	<input type="hidden" name="on_fail" value="failure.php" />
+	<input type="hidden" name="email_subject" value="Request Submission for XYZ" />
+
+When you are creating form elements, be sure the label for each question has a class of **question** associated with it. That is how the js pulls that content out.
+
+## Reason for Building ##
+I come across this need all the time. I always think, "Oh I'll just throw a form together." but after you take care of the php to mail it, error checking, it does take time. Couple that with the fact I hate using the name value in emails as the question. I wanted a way to just have the exact language of the question on the form be what was included in the email, with minimal duplication by me. Hence, JPEF Magic was born.
+
+## License ##
+
+JPEF Magic by Tim Habersack is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.

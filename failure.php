@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>    	
+<base href="http://csdirect-test.iii.com" />
+<title>Email Form Test</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="screen" href="errors.css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" ></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.min.js"></script>
+<script type="text/javascript" src="jquery.metadata.js"></script>
+<script type="text/javascript" src="jpef_magic.js"></script>
+
+
+</head>
+<body>
+<h1>JPEF Magic!</h1>
+<form id="the_form" action="/common/functions/jpef_magic.php" method="POST">
+
+<input type="hidden" name="to_email" value="timh@iii.com" />
+<input type="hidden" name="from_email" value="helpdesk@iii.com" />
+<input type="hidden" name="on_success" value="success.php" />
+<input type="hidden" name="on_fail" value="failure.php" />
+<input type="hidden" name="email_subject" value="Request Submission for XYZ" />
+<input type="hidden" name="email_body" value="" />
+
+<label for="sender_email" class="question">Enter your email address:</label><br>
+<input type="text" name="sender_email" id="sender_email"  validate="required:true,email:true" size="40" maxlength="90" /><br />
+<label for="cc_email" class="question">CC:</label><br>
+<input type="text" name="cc_email" id="cc_email" size="40" maxlength="90" /><br />
+<label for="product" class="question">Enter your Product:</label><br>
+<select name="product" id="product" class="required" >
+<option value="">Choose...</option>
+<option value="prod_1">Product 1</option>
+<option value="prod_2">Product 2</option>
+</select><br />
+<label for="issues" class="question">Select your issue(s):</label><br>
+<label for="issues_noboot">
+	<input type="checkbox"  name="issues" value="noboot" validate="required:true, minlength:1" />The system does not boot<br>
+</label>
+<label for="issues_nosound">
+<input type="checkbox"  name="issues"  value="nosound" /> There is no sound<br>
+</label>
+<label for="issues" class="invalid error">Please select at least one issue.<br></label>
+
+<label for="contact" class="question" >Choose your preferred method of contact:</label><br>
+
+	<label for="phone">
+		<input  type="radio" id="phone" value="Phone" name="contact" validate="required:true" />
+		Phone
+	</label><br>
+	<label for="email">
+		<input  type="radio" id="email" value="Email" name="contact"/>
+		Email
+	</label><br>
+	<label for="in_person">
+		<input  type="radio" id="in_person" value="In Person" name="contact"/>
+		In Person
+	</label><br>
+	<label for="contact" class="invalid error">Please select your preferred method of contact<br></label>
+<label for="problem" class="question">Describe, in detail, your problem:</label><br />
+<textarea name="problem" id="problem" validate="required:true" rows="4" cols="40"></textarea><br />
+
+
+<label for="agree"><input type="checkbox" class="checkbox" id="agree" name="agree" validate="required:true" />By checking this, you agree to actually want us to do the work</label>
+			<br>
+			<label for="agree" class="error invalid">Please agree to our policy!<br></label>
+<input class="submit" type="submit" value="Submit"/>
+</form>
+
+</body>
+
+</html>
+    
